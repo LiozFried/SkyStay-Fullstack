@@ -3,6 +3,7 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV || 'development'}` })
 
 import http from 'http'
 import path from 'path'
+import { fileURLToPath } from 'url'
 import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser'
@@ -18,7 +19,9 @@ import { logger } from './services/logger.service.js'
 
 process.env.DEBUG = 'router:*,express:*'
 
-const __dirname = path.resolve()
+// Fix __dirname for ES modules (required for correct path resolution)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 // Allowed CORS origins (dev + prod)
 const allowedOrigins = [
