@@ -1,5 +1,8 @@
 import dotenv from 'dotenv'
-dotenv.config({ path: `.env.${process.env.NODE_ENV || 'development'}` })
+// In production (Render), env vars are set via dashboard. In dev, load from .env file
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.config({ path: `.env.${process.env.NODE_ENV || 'development'}` })
+}
 
 import http from 'http'
 import path from 'path'
@@ -30,6 +33,7 @@ const allowedOrigins = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
     'https://skystay.onrender.com',
+    'https://skystay-ovyh.onrender.com',
 ]
 
 const app = express()

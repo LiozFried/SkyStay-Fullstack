@@ -10,7 +10,12 @@ export const logger = {
 
 const logsDir = './logs'
 
-if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir)
+// Try to create logs directory, but don't crash if it fails (e.g., on Render)
+try {
+    if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir)
+} catch (err) {
+    console.log('Note: Could not create logs directory, file logging disabled')
+}
 
 function doLog(level, ...args) {
     const store = asyncLocalStorage.getStore()
