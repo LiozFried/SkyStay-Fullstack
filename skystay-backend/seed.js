@@ -2,12 +2,13 @@ import dotenv from 'dotenv'
 dotenv.config({ path: `.env.${process.env.NODE_ENV || 'development'}` })
 
 import { ObjectId } from 'mongodb'
+import bcrypt from 'bcrypt'
 import { dbService } from './services/db.service.js'
 import { logger } from './services/logger.service.js'
 
 import { users } from './data/seed/users.js'
 import { stays } from './data/seed/stays.js'
-import { reviews } from './data/seed/generate-reviews.js'
+import { reviews } from './data/seed/reviews.js'
 import { reservations } from './data/seed/reservations.js'
 import { stayPhotos } from './data/seed/stayphotos.js'
 
@@ -33,11 +34,15 @@ async function seed() {
         // 2. Create new ObjectIds for everything
         const idMap = {}
 
-        users.forEach(u => {
+        // Hash passwords and assign ObjectIds to users
+        const saltRounds = 10
+        for (const u of users) {
             const newId = new ObjectId()
             idMap[u._id] = newId
             u._id = newId
-        })
+            // Hash the password
+            u.password = await bcrypt.hash(u.password, saltRounds)
+        }
 
         stays.forEach(s => {
             const newId = new ObjectId()
