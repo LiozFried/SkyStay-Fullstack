@@ -59,6 +59,14 @@ export function Login() {
                     <option key={user._id} value={user.username}>{user.fullname}</option>
                 ))}
             </select>
+            <input 
+                type="password" 
+                name="password" 
+                value={credentials.password} 
+                placeholder="Password (use: 123)" 
+                onChange={handleChange} 
+                required 
+            />
             <button>Login</button>
         </form>
     )
