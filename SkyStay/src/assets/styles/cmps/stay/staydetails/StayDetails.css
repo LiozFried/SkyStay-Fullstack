@@ -1,0 +1,188 @@
+/* Container */
+
+.details-page .photo-gallery {
+    overflow: hidden;
+    width: 100%;
+    margin: 22px auto;
+    border-radius: 12px;
+}
+
+.stay-details-wrapper {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0;
+    /* remove conflict with main-container */
+    box-sizing: border-box;
+}
+
+.stay-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* force all top-level sections inside StayDetails to respect wrapper width */
+.stay-details>* {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* make photo gallery span wrapper width but not full viewport */
+.stay-details .photo-gallery {
+    width: 100%;
+    margin: 22px auto;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Header and Gallery span full width */
+.stay-details>header,
+.stay-details>.photo-gallery,
+.stay-details>section:not(.details-layout) {
+    grid-column: 1 / -1;
+}
+
+/* Header */
+
+.stay-title {
+    font-size: 26px;
+    line-height: 30px;
+    font-weight: 500;
+    letter-spacing: normal;
+    color: #222222;
+    margin-bottom: 0;
+}
+
+/* Two-column layout */
+.details-layout {
+    display: grid;
+    grid-template-columns: 2fr 372px;
+    column-gap: 64px;
+    /* enough space between left and card */
+    align-items: start;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.details-left {
+    grid-column: 1;
+    min-width: 0;
+    padding-right: 6px;
+    /* spacing from the card */
+}
+
+.details-left .host-info .host-avatar {
+    display: flex;
+    width: 56px;
+    height: 56px;
+    flex: 0 0 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+.hosted-by {
+    font-size: 18px;
+}
+
+.host-time {
+    font-size: 16px;
+}
+
+.details-left .host-info .host-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.details-left .stay-location {
+    font-size: 22px;
+    font-weight: 500;
+    font-family: var(--bnb-text);
+    color: #222;
+    margin: 0;
+}
+
+.details-right {
+    grid-column: 2;
+    align-self: flex-start;
+    justify-self: end;
+    position: sticky;
+    top: 120px;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    /* push it to the natural right edge */
+    box-sizing: border-box;
+}
+
+/* Location and basic details */
+.stay-location {
+    font-size: 22px;
+    line-height: 26px;
+    color: #222222;
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+.basic-details p {
+    font-size: 16px;
+    color: #222;
+    margin: 0;
+    margin-bottom: 2px;
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-top: 2px;
+    margin-bottom: 20px;
+}
+
+.rating-row .star {
+    color: #222;
+    font-size: 16px;
+    margin-right: 4px;
+}
+
+.rating-row .rating {
+    font-weight: 600;
+}
+
+.rating-row .reviews-link {
+    color: #222;
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+/* Lists */
+.stay-amenities ul,
+.stay-rules ul,
+.stay-reviews ul {
+    list-style: none;
+    padding: 0;
+}
+
+.stay-amenities li,
+.stay-rules li,
+.stay-reviews li {
+    margin-bottom: 0.3rem;
+}
+
+@media (max-width: 768px) {
+
+    .stay-details-wrapper,
+    .stay-details {
+        max-width: none;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+    }
+}

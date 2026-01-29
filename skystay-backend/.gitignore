@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Environment files (NEVER commit real credentials!)
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/

@@ -1,0 +1,125 @@
+.recommendation-rows {
+    --gap: 11px;
+    position: relative;
+    margin-top: 10px;
+}
+
+.recommendation-rows .recommendation-row {
+    position: relative;
+}
+
+.recommendation-rows .stay-track {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.recommendation-rows .stay-track::-webkit-scrollbar {
+    display: none;
+}
+
+.recommendation-rows .row-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(0px, calc((100% - (var(--gap) * 6)) / 7), 251px);
+    gap: var(--gap);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recommendation-rows .row-list>li,
+.recommendation-rows .row-list>.stay-item {
+    scroll-snap-align: start;
+    max-width: 251px;
+    box-sizing: border-box;
+}
+
+.recommendation-rows .row-arrows {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: inline-flex;
+    gap: 8px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.recommendation-rows .recommendation-row:first-child .row-arrows {
+    top: -40px;
+    right: 6px;
+}
+
+.recommendation-rows .row-arrow {
+    pointer-events: auto;
+    background-color: #f2f2f2f2;
+    border: 0;
+    box-shadow: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #111;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.recommendation-rows .row-arrow:disabled {
+    visibility: visible !important;
+    background: none;
+    border: 1px solid rgb(193, 193, 193);
+    color: rgb(193, 193, 193);
+    cursor: default;
+}
+
+.recommendation-rows .row-arrow .arrow-svg {
+    display: block;
+    width: 12px;
+    height: 12px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    overflow: visible;
+}
+
+.recommendation-rows .row-arrow .arrow-svg.left {
+    transform: rotate(180deg);
+}
+
+.recommendation-rows .recommendation-row+.recommendation-row {
+    margin-top: 32px;
+}
+
+@media (max-width: 1440px) {
+    .recommendation-rows .row-list {
+        grid-auto-columns: clamp(0px, calc((100% - (var(--gap) * 5)) / 6), 251px);
+    }
+}
+
+@media (max-width: 1128px) {
+    .recommendation-rows .row-list {
+        grid-auto-columns: clamp(0px, calc((100% - (var(--gap) * 4)) / 5), 251px);
+    }
+}
+
+@media (max-width: 950px) {
+    .recommendation-rows .row-list {
+        grid-auto-columns: clamp(0px, calc((100% - (var(--gap) * 3)) / 4), 251px);
+    }
+}
+
+@media (max-width: 744px) {
+    .recommendation-rows .row-list {
+        grid-auto-columns: clamp(0px, calc((100% - (var(--gap) * 1)) / 2), 251px);
+    }
+}

@@ -1,0 +1,263 @@
+/* Booking Card */
+.booking-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 24px;
+    font-family: var(--bnb-text);
+    max-width: 372.325px;
+    max-height: 310.8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
+
+}
+
+.booking-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.nights {
+    font-size: 16px;
+    line-height: 20px;
+    color: #6A6A6A;
+    font-weight: 400;
+}
+
+.booking-header .price {
+    font-size: 24px;
+}
+
+.date-inputs {
+    display: flex;
+    gap: 0;
+    /* remove gap so they hug each other */
+}
+
+.date-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+.date-box:first-child {
+    border-top-left-radius: 8px;
+    border-right: none;
+    /* prevent double border */
+}
+
+.date-box:last-child {
+    border-top-right-radius: 8px;
+}
+
+.date-box label {
+    font-size: 11px;
+    color: #222;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+/* Style the DatePicker input inside */
+.date-box .react-datepicker-wrapper {
+    width: 100%;
+}
+
+.date-box .react-datepicker-wrapper input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 4px 0;
+    width: 100%;
+}
+
+/* guests dropdown */
+.guest-dropdown {
+    border: 1px solid grey;
+    border-top: none;
+    /* attaches to checkout box */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+/* The closed guest selector box */
+.guest-summary {
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+    position: relative;
+    border-top: none;
+    /* ensures it connects seamlessly */
+}
+
+/* Stack label + guest count on the left */
+.guest-summary label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #222;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.guest-summary p {
+    margin: 4px 0 0 0;
+    font-size: 14px;
+    color: #222;
+}
+
+.guest-chevron {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 4;
+    color: #222;
+    margin-top: 10px;
+    /* aligns with “1 guest” */
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+/* Rotate upward when dropdown is open */
+.guest-chevron.open {
+    transform: rotate(180deg);
+}
+
+.guest-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    margin-top: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    z-index: 10;
+    padding: 8px 0;
+}
+
+.guest-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+}
+
+.guest-label p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.guest-label span {
+    font-size: 16px;
+}
+
+.guest-counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.guest-counter button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #717171;
+    color: #717171;
+    background: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    line-height: 1;
+    /* ensures the + and - are perfectly vertically centered */
+    padding: 0;
+}
+
+.guest-counter button:disabled {
+    opacity: 0.1;
+    cursor: default;
+}
+
+.guest-counter span {
+    width: 16px;
+    border-color: #fafafa;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* reserve button */
+.reserve-btn {
+    position: relative;
+    overflow: hidden;
+    background: #DA1249;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: calc(100% - 10px);
+    margin-top: 12px;
+    margin-right: 10px;
+    transition: transform 0.2s ease;
+    isolation: isolate;
+    /* ensures ::before stays behind text */
+}
+
+.reserve-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    /* invisible default */
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+            rgb(255, 56, 92) 0%,
+            rgb(237, 63, 103) 27.5%,
+            rgb(235, 31, 99) 40%,
+            rgb(239, 4, 113) 57.5%,
+            #DA1249 75%,
+            #DA1249 100%);
+    background-size: 200% 200%;
+    z-index: -1;
+    /* ensures it's behind the text */
+    transition: background-position 0.2s ease, opacity 0.3s ease;
+}
+
+.reserve-btn:hover::before {
+    opacity: 1;
+}
+
+.reserve-btn:hover {
+    transform: translateY(-1px);
+}
+
+.reserve-btn:active {
+    transform: translateY(0);
+}
+
+.charge-note {
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    margin-top: 6px;
+    color: #555;
+}
+
+.booking-summary {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,0 +1,7 @@
+import dotenv from 'dotenv'
+dotenv.config({ path: '.env.production' })
+
+export default {
+    dbURL: process.env.MONGO_URL,
+    dbName: process.env.DB_NAME
+}

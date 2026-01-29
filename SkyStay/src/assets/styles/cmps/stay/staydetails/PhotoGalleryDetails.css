@@ -1,0 +1,168 @@
+/* details gallery */
+.photo-gallery {
+    position: relative;
+    /* for the overlay button later */
+    display: grid;
+    width: 100vw;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns */
+    grid-template-rows: repeat(2, 170px);
+    /* 2 rows (tweak height) */
+    gap: 8px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.photo-gallery img {
+    border-radius: 0;
+}
+
+/* BIG left image spans 2 cols × 2 rows = 4 blocks */
+.main-photo {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+}
+
+.main-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* RIGHT side (4 smalls) occupies cols 3–4, rows 1–2 */
+.side-photos {
+    position: relative;
+    grid-column: 3 / span 2;
+    grid-row: 1 / span 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2×2 window */
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.side-photos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-counter {
+    display: none;
+}
+
+.photo-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.photo-wrapper img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* show all photos button */
+.photo-gallery .show-all-btn {
+    position: absolute;
+    display: flex;
+    bottom: 10px;
+    right: -50px;
+    height: 33.6px;
+    width: 158.6px;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border: 1px solid #222;
+    background-color: #fff;
+    color: #222;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.show-all-btn:hover {
+    background-color: #f7f7f7;
+}
+
+.show-all-icon {
+    display: block;
+    height: 16px;
+    width: 16px;
+    fill: currentColor;
+}
+
+/* --- MOBILE: horizontal swipe gallery --- */
+@media (max-width: 768px) {
+
+    .photo-gallery {
+        /* horizontal swipe */
+        display: flex;
+        overflow-x: auto;
+        overflow-y: visible;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 0;
+
+        /* key: counteract .main-container padding (28px) so the gallery
+       starts at the very left edge of the viewport and doesn't get cut off */
+        margin-left: -56px;
+        margin-right: 56px;
+
+        /* no centering tricks */
+        width: auto;
+        transform: none;
+
+        border-radius: 0;
+        scroll-behavior: smooth;
+        position: relative;
+        background: #000;
+        /* avoids white gaps between slides */
+    }
+
+    .photo-gallery::-webkit-scrollbar {
+        display: none;
+    }
+
+    .main-photo,
+    .side-photos {
+        display: contents;
+    }
+
+    /* flatten grid to a single row of images */
+
+    .photo-gallery img {
+        flex: 0 0 100vw;
+        /* each slide is exactly viewport width */
+        width: 100vw;
+        height: 100vw;
+        /* square */
+        object-fit: cover;
+        scroll-snap-align: start;
+    }
+
+    .photo-counter {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 22px;
+        width: 45px;
+        bottom: 20px;
+        right: 28px;
+        /* now visible (not clipped) */
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 6px 10px;
+        border-radius: 5px;
+        z-index: 10;
+    }
+}
