@@ -123,3 +123,39 @@
         grid-auto-columns: clamp(0px, calc((100% - (var(--gap) * 1)) / 2), 251px);
     }
 }
+
+@media (max-width: 550px) {
+    .recommendation-rows {
+        --gap: 16px;
+        padding: 0 16px;
+    }
+    
+    .recommendation-rows .row-list {
+        grid-auto-columns: calc(100vw - 64px);
+    }
+    
+    .recommendation-rows .row-list>li,
+    .recommendation-rows .row-list>.stay-item {
+        max-width: calc(100vw - 64px);
+    }
+    
+    .recommendation-rows .row-arrows {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .recommendation-rows {
+        --gap: 12px;
+        padding: 0 12px;
+    }
+    
+    .recommendation-rows .row-list {
+        grid-auto-columns: calc(100vw - 48px);
+    }
+    
+    .recommendation-rows .row-list>li,
+    .recommendation-rows .row-list>.stay-item {
+        max-width: calc(100vw - 48px);
+    }
+}

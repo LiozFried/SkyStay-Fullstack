@@ -167,3 +167,38 @@
     width: 7px;
     height: 7px;
 }
+
+/* Mobile responsive styles */
+@media (max-width: 550px) {
+    .stay-card {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .stay-img-wrap {
+        border-radius: 10px;
+    }
+    
+    .stay-card .stay-title {
+        font-size: 0.9rem;
+    }
+    
+    .stay-info p {
+        font-size: .85em;
+    }
+}
+
+@media (max-width: 480px) {
+    .stay-img-wrap {
+        border-radius: 8px;
+    }
+    
+    .stay-info {
+        margin-top: 8px;
+    }
+    
+    .stay-card .stay-title {
+        font-size: 0.95rem;
+        line-height: 1.2;
+    }
+}
