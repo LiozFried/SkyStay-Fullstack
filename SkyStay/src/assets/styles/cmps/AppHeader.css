@@ -469,3 +469,81 @@ body.details-page .app-header.mini {
     box-shadow: none !important;
 }
 
+/* Mobile responsive fixes for small screens */
+@media (max-width: 768px) {
+    .header-nav {
+        grid-template-rows: 70px auto;
+        min-height: 120px;
+    }
+    
+    .app-header .container {
+        padding-inline: 16px;
+    }
+    
+    .logo-text {
+        display: none;
+    }
+    
+    .header-right {
+        gap: 8px;
+    }
+    
+    .nav-pill.homes img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    /* Hide "Switch to hosting" on tablets and below */
+    .app-header .header-right .switch-mode-btn,
+    .app-header .header-right .host-link,
+    .app-header .header-right span[role="button"][tabindex="0"] {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-nav {
+        grid-template-areas:
+            "left right"
+            "center center";
+        grid-template-columns: 1fr auto;
+        grid-template-rows: 60px auto;
+        min-height: 100px;
+        row-gap: 8px;
+    }
+    
+    .header-top-center {
+        display: none;
+    }
+    
+    .app-header .container {
+        padding-inline: 12px;
+    }
+    
+    .header-center {
+        max-width: 100%;
+        padding: 0 8px;
+    }
+    
+    .brand-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .lang-btn,
+    .profile-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .nav-pill.homes {
+        font-size: 12px;
+        padding: 6px 2px 1px;
+    }
+    
+    .nav-pill.homes img {
+        width: 40px;
+        height: 40px;
+    }
+}
+

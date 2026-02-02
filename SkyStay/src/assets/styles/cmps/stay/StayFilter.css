@@ -563,3 +563,118 @@
     background-color: transparent;
     box-shadow: none;
 }
+
+/* Mobile responsive styles for search bar */
+@media (max-width: 768px) {
+    .search-pill,
+    .search-pill-in-overlay {
+        height: 56px;
+        padding: 0 6px;
+    }
+    
+    .pill-section {
+        padding: 8px 12px;
+    }
+    
+    .label {
+        font-size: 10px;
+    }
+    
+    .placeholder-input,
+    .placeholder-btn {
+        font-size: 12px;
+    }
+    
+    .search-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .mini-search-pill {
+        width: 280px;
+        height: 44px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-pill,
+    .search-pill-in-overlay {
+        height: 50px;
+        padding: 0 4px;
+        border-radius: 24px;
+    }
+    
+    .pill-section {
+        padding: 6px 8px;
+    }
+    
+    .pill-section.where {
+        width: 40%;
+    }
+    
+    .pill-section.checkin,
+    .pill-section.checkout {
+        display: none;
+    }
+    
+    .pill-section.who {
+        width: auto;
+        flex: 1;
+        padding-right: 50px;
+    }
+    
+    .pill-divider {
+        height: 24px;
+    }
+    
+    .label {
+        font-size: 9px;
+    }
+    
+    .placeholder-input,
+    .placeholder-btn {
+        font-size: 11px;
+    }
+    
+    .search-btn {
+        width: 36px;
+        height: 36px;
+        transform: translate(2px, -56%);
+    }
+    
+    .mini-search-pill {
+        width: 100%;
+        max-width: 240px;
+        height: 40px;
+        padding: 5px 5px 5px 12px;
+    }
+    
+    .mini-search-content {
+        gap: 6px;
+    }
+    
+    .mini-search-where,
+    .mini-search-when,
+    .mini-search-who {
+        font-size: 12px;
+    }
+    
+    .mini-search-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .search-dropdown-overlay {
+        width: calc(100vw - 24px) !important;
+        left: 12px !important;
+        right: 12px !important;
+        border-radius: 16px;
+    }
+    
+    .search-dropdown-overlay.fixed-overlay {
+        width: calc(100vw - 24px) !important;
+        left: 12px !important;
+        right: 12px !important;
+        transform: none !important;
+    }
+}
